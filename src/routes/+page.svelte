@@ -21,7 +21,7 @@
     let canvas: HTMLCanvasElement;
     let ctx: CanvasRenderingContext2D;
 
-    // Start game
+    // Start or restart game
     function startGame() {
         gameStarted = true;
         gameOver = false;
@@ -137,5 +137,15 @@
     {#if !gameStarted}
         <p class="mt-4 text-lg">Click or press Space to start!</p>
     {/if}
+    {#if gameOver}
+        <div class="mt-4 flex flex-col items-center">
+            <p class="text-xl mb-2">Final Score: {score}</p>
+            <button
+                on:click={startGame}
+                class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
+            >
+                Restart Game
+            </button>
+        </div>
+    {/if}
 </div>
-
